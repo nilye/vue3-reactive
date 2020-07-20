@@ -1,0 +1,34 @@
+<html>
+    <head></head>
+    <body>
+        <h1 id="text"></h1>
+        <button id="btn">ADD</button>
+
+        <script type="text/javascript" src="util.js"></script>
+        <script type="text/javascript" src="effect.js"></script>
+        <script type="text/javascript" src="reactive.js"></script>
+        <script type="text/javascript" src="ref.js"></script>
+        <script>
+
+            // 为了体现reactive对象的深度响应，改为监听 data.value.count
+            const data = reactive({
+              count: 0,
+              value: {
+              	count: 0
+              }
+            })
+
+            document.getElementById('btn').addEventListener('click', ()=>{
+                data.value.count ++
+            })
+
+            watchEffect(()=>{
+                console.log('>> watch effect', data)
+                const str = `Clicked ${data.value.count} Times`
+                document.getElementById('text').innerText = str
+            })
+
+
+        </script>
+    </body>
+</html>
