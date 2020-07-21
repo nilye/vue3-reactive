@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hook</title>
+</head>
+<body>
+    <script src="./context.js"></script>
+    <script src="./hook.js"></script>
+    <script>
+
+        function setup(){
+            const margin = mixin('margin')
+            console.log(margin)
+
+            return {
+            	...margin
+            }
+        }
+
+        setup()
+    </script>
+</body>
+</html>
